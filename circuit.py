@@ -2,8 +2,6 @@ from adafruit_circuitplayground.express import cpx
 
 from random import randint
 import colorsys
-# from random import randbool
-# randbool doesn't import for w/e reason . . .
 
 step_index = 0
 speed_index = 0
@@ -56,7 +54,7 @@ def change_mode():
         if cpx.button_a:
             step_index = (step_index + 1) % len(steps)
 
-cpx.pixels.brightness = .9
+cpx.pixels.brightness = .5
 
 # Color wheel
 theta = randint(0, 360)
@@ -99,73 +97,3 @@ while True:
 # of unique colors: {360 / step}
 Circle speed (in LEDs per cycle): {(speed / 36) % 10}
 ======================================""")
-
-""" All lights have same gradient
-theta = randint(0, 360)
-tupl = hls_to_rgb((
-    scale(theta, 0, 360, 0, 1),
-    randint(45, 60) / 100.0,
-    randint(70, 100) / 100.0
-))
-
-cpx.pixels.show()
-while True:
-    tupl = gradient(tupl, 1)
-    cpx.pixels.fill(tupl)
-"""
-
-""" R-G-B Gradient
-
-cpx.pixels.brightness = 0.3
-cpx.pixels.fill((0, 0, 0))
-
-tupl = (0, 0, 0)
-
-cpx.pixels.show()
-while True:
-    tupl = gradient(tupl)
-    cpx.pixels.fill(tupl)
-"""
-
-""" Circling Rainbow
-
-import time
-
-leds = [
-        (255, 0, 0),
-        (255, 127, 0),
-        (0, 255, 0),
-        (0, 255, 127),
-        (75, 0, 130),
-        (60, 0, 255),
-        (255, 255, 255),
-        (0, 100, 0),
-        (100, 0, 0),
-        (0, 0, 100)
-    ]
-
-cpx.pixels.brightness = 0.3
-cpx.pixels.fill((0, 0, 0))
-
-while True:
-    for i in range(10):
-        time.sleep(0.1)
-        cpx.pixels[i] = leds[i]
-        cpx.pixels.show()
-        cpx.pixels[i] = (0, 0, 0)
-"""
-
-"""
-cpx.pixels.fill((0, 150, 255))
-while True:
-    cpx.pixels.show()
-"""
-
-"""
-def randbool():
-    n = randint(0, 1)
-    if n == 0:
-        return False
-    else:
-        return True
-"""
